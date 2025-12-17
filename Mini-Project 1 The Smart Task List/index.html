@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project: Smart Task List</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .task-card { border: 2px solid #333; padding: 15px; margin-bottom: 10px; border-radius: 8px; }
+        .completed { background-color: #d4edda; text-decoration: line-through; color: #155724; border-color: #c3e6cb; }
+        .priority-high { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="task-card">
+        <h3 class="task-title">Buy Groceries</h3>
+        <p>Milk and Eggs</p>
+        <button class="complete-btn">Complete Task</button>
+        <button class="important-btn">Mark Important</button>
+    </div>
+
+    <script>
+        // 1. When "Complete Task" is clicked
+        $('.complete-btn').on('click', function() {
+            // $(this) is the button you clicked. 
+            // YOUR TASK: Use .closest() to find the '.task-card' and add the class 'completed'
+
+            $(this).closest('.task-card').addClass('completed')
+        });
+
+        // 2. When "Mark Important" is clicked
+        $('.important-btn').on('click', function() {
+            // $(this) is the button you clicked.
+            // YOUR TASK: Use .siblings() to find the 'h3' and add class 'priority-high'
+            // YOUR TASK: Change $(this) text to "Priority Set!"
+
+
+            $(this).siblings('h3').addClass('priority-high')
+            $(this).text("Priority Set!")
+        });
+    </script>
+</body>
+</html>
