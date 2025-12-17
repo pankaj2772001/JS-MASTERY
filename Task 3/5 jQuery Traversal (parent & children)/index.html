@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Traversal</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <h1 id="main-title" class="header-text">My DOM Selection Playground</h1>
+
+    <div class="content-box">
+        <p class="paragraph-text">This is the first paragraph of content.</p>
+        <button id="action-btn">Click Me!</button>
+    </div>
+
+    <div class="content-box second-box">
+        <p class="paragraph-text">This is the second paragraph of content.</p>
+        <ul>
+            <li class="list-item">Item 1</li>
+            <li class="list-item special">Item 2</li>
+            <li class="list-item">Item 3</li>
+        </ul>
+    </div>
+
+    <script>
+        
+       $('.content-box > ul').children().text('Query Child!')
+
+       console.log(  $('.content-box > ul').children())
+
+    </script>
+
+</body>
+</html>
