@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Siblings</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div class="content-box second-box">
+        <p class="paragraph-text">This is the second paragraph of content.</p>
+        <ul>
+            <li class="list-item">Item 1</li>
+            <li class="list-item special">Item 2</li>
+            <li class="list-item">Item 3</li>
+        </ul>
+    </div>
+
+    <script>
+
+        $('.paragraph-text').next().css('border','2px solid red')
+
+        console.log($('.paragraph-text').next())
+        
+       
+    </script>
+</body>
+</html>
