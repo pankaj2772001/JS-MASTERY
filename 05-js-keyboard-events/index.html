@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Keyboard Events</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; text-align: center; }
+        input { padding: 10px; font-size: 1.2rem; border: 2px solid #ccc; border-radius: 5px; width: 300px; }
+        #display-text { margin-top: 20px; font-weight: bold; color: #333; font-size: 1.5rem; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Type something below:</h2>
+    <input type="text" id="name-input" placeholder="Type your name...">
+    <p id="display-text">Waiting for you to type...</p>
+
+ 
+</body>
+   <script>
+        // --- Task 2/5: Keyboard Logic (Pure JS) ---
+
+        // 1. Select the input and the p tag using document.getElementById
+
+        const pa = document.getElementById('display-text')
+        const inputp = document.getElementById('name-input')
+        
+        // 2. Add an 'input' event listener to the input field
+
+        inputp.addEventListener('input', function(){
+
+            pa.textContent = inputp.value   
+        })
+        
+        // 3. Inside the function, set the p tag's textContent to equal the input's value
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        A Keyboard Event happens whenever you touch a key. 
+        
+        1. 'keydown': Fires the moment the key is pushed down.
+        2. 'keyup': Fires when you let go of the key.
+        3. 'input': This is the "gold standard" for text boxes. It catches 
+           EVERY change (typing, deleting, or even pasting text).
+        
+        In Pure JS, we use .addEventListener('event', function). This is 
+        the standard way to tell an element: "Wait for this to happen."
+        
+        
+
+        To get what is typed, we look at the input element's '.value'. 
+        The '.textContent' is how we change the text inside the <p> tag.
+        */
+    </script>
+</html>
