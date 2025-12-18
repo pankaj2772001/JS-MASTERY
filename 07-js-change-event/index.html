@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Change Event</title>
+    <style>
+        body { font-family: sans-serif; padding: 50px; transition: 0.5s; text-align: center; }
+        .dark-mode { background-color: #333; color: white; }
+        .light-mode { background-color: #f9f9f9; color: #333; }
+        select { padding: 10px; font-size: 1rem; border-radius: 5px; }
+    </style>
+</head>
+<body class="light-mode">
+
+    <h2>Select Page Theme:</h2>
+    <select id="theme-selector">
+        <option value="light">Light Theme</option>
+        <option value="dark">Dark Theme</option>
+    </select>
+
+    <script>
+        // --- Task 4/5: Change Event Logic (Pure JS) ---
+
+        // 1. Select the <select> element and the <body>
+
+            const themeSelector = document.getElementById('theme-selector')
+            const bodyElement = document.querySelector('body')
+        
+        // 2. Add a 'change' event listener to the <select>
+
+            themeSelector.addEventListener('change', function(){
+
+                if(themeSelector.value === 'dark'){
+  bodyElement.classList.remove('light-mode')
+                    bodyElement.classList.add('dark-mode')
+                }else{
+                     bodyElement.classList.remove('dark-mode')
+                       bodyElement.classList.add('light-mode')
+                }
+            })
+        
+        // 3. Inside, check: if the value is 'dark', add 'dark-mode' class to body. 
+        //    Otherwise, remove it.
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        The 'change' event is efficient. It doesn't fire for every tiny click. 
+        It only fires when the user makes a final choice and "commits" to it 
+        (like picking an option from a dropdown or clicking away from a box).
+        
+        In Pure JS:
+        - We use element.classList.add('name') to add a CSS class.
+        - We use element.classList.remove('name') to take it away.
+        
+        It's like a costume change! We wait for the choice, then swap 
+        the body's "outfit" (the CSS class).
+        */
+    </script>
+</body>
+</html>
