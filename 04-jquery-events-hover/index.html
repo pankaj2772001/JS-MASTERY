@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Events: Hover Mastery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
+        .box { 
+            width: 200px; 
+            height: 100px; 
+            background: lightblue; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: 0.3s; 
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        /* This class will be added by jQuery */
+        .active { 
+            background: orange; 
+            color: white; 
+            transform: scale(1.1);
+            border: 3px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hover-box" class="box">Hover Over Me!</div>
+
+    <script>
+        // --- Task 1/5: Mouse Hover Logic ---
+        
+        // 1. Write the 'mouseenter' logic here to add the 'active' class
+
+        $('#hover-box').on('mouseenter' ,function(){
+
+            $(this).addClass('active')
+            // $('#hover-box').addClass('active')
+        })
+        
+        // 2. Write the 'mouseleave' logic here to remove the 'active' class
+
+         $('#hover-box').on('mouseleave', function(){
+
+            $(this).removeClass('active')
+         })
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        Imagine your web page is like a smart house. 'Events' are like sensors.
+        
+        1. MOUSEENTER: This is like a motion sensor. As soon as the mouse pointer 
+           crosses the "border" of the element, the sensor trips and tells 
+           JavaScript: "Hey! Someone is here!"
+        
+        2. MOUSELEAVE: This sensor trips when the mouse pointer leaves the area 
+           of the element. It tells JavaScript: "The person left the room!"
+        
+        3. .addClass() & .removeClass(): These are like light switches. 
+           We use the sensors to turn the 'active' style on and off.
+        
+        Using .on('event', function) is how we tell the computer: 
+        "Keep your ears open for this specific sound (event), and when 
+        you hear it, run this specific block of code."
+        */
+    </script>
+</body>
+</html>
