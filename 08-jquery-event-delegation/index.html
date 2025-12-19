@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Event Delegation</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .list-container { border: 2px dashed #ccc; padding: 20px; }
+        .item { padding: 10px; background: #eee; margin: 5px; cursor: pointer; border-radius: 4px; }
+        .item:hover { background: #ddd; }
+    </style>
+</head>
+<body>
+
+    <button id="add-item">Add New Item</button>
+
+    <div class="list-container" id="parent-list">
+        <div class="item">Original Item 1 (Click me)</div>
+        <div class="item">Original Item 2 (Click me)</div>
+    </div>
+
+    <script>
+        // 1. Logic to add new items (I'll provide this)
+        $('#add-item').on('click', function() {
+            $('#parent-list').append('<div class="item">New Dynamic Item</div>');
+        });
+
+        // --- Task 5/5: Event Delegation Logic ---
+
+        // Your Goal: Make EVERY item (old and new) turn red when clicked.
+        
+        // INCORRECT WAY (Only works for original items):
+        // $('.item').on('click', function() { $(this).css('color', 'red'); });
+
+        // CORRECT WAY (Delegation):
+        $('#parent-list').on('click', '.item', function() { 
+                $(this).css('color', 'red');
+        });
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        Event Delegation works because of 'Event Bubbling'. When you click a 
+        child, the click "bubbles up" like a bubble in a soda to the parent.
+        
+        In the jQuery code: $('#parent-list').on('click', '.item', function...)
+        
+        1. We tell the PARENT (#parent-list) to listen.
+        2. We tell it: "Only run this function IF the click actually hit 
+           someone with the class .item".
+        
+        This is super powerful because even if we add 100 new items, the 
+        parent is already listening for them!
+        */
+    </script>
+</body>
+</html>
