@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,39 @@
 
     }
         )
+    </script>
+
+    </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Messenger Practice</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="message-box" placeholder="Type a secret...">
+    <button id="send-btn">Send Secret</button>
+    
+    <div id="secret-display" style="color: blue; margin-top: 10px;"></div>
+
+    <script>
+        // Your logic will go here
+
+        $(document).ready(function(){
+
+
+            $('#send-btn').on('click', function(){
+
+                const secret = $('#message-box').val()
+
+                $('#secret-display').text(secret)
+            })
+        })
     </script>
 
     </body>
