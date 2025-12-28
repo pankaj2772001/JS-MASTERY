@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logic Practice</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <div id="room" style="border: 2px solid black; padding: 20px;">
+        <button class="light-switch">Turn on light</button>
+        <p class="status">The room is dark.</p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            $('.light-switch').on('click', function(){
+
+                $(this).siblings('.status').text('THE LIGHT IS ON!')
+            })
+
+    }
+        )
+    </script>
+
+    </body>
+</html>
