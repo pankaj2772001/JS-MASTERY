@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Builder Practice</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="new-item" placeholder="Add something to the list...">
+    <button id="add-item-btn">Add to List</button>
+    
+    <ul id="my-dynamic-list" style="background: #f0f0f0; padding: 20px;">
+        </ul>
+
+    <script>
+        $(document).ready(function(){
+            // Your logic goes here
+
+
+            
+
+            $('#add-item-btn').on('click', function(){
+
+                const value = $('#new-item').val()
+
+                $('#my-dynamic-list').append(`<li>${value}</li>`)
+            })
+        });
+
+        /* DEVELOPER NOTES (The Appending Concept):
+        --------------------------------------
+        1. SCOOP: Get the value from the input.
+        2. BUILD: Wrap that value in HTML tags like <li> ... </li>
+        3. SNAP: Use .append() to snap it onto the parent list.
+        
+        Syntax: $('#parent').append(`<li>${myValue}</li>`);
+        */
+    </script>
+</body>
+</html>
