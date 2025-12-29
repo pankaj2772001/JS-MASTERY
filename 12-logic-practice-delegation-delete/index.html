@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Cleanup Practice</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .delete-me { color: red; cursor: pointer; margin-left: 10px; font-weight: bold; }
+        li { margin-bottom: 10px; padding: 5px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <button id="spawn-btn">Spawn New Item</button>
+    
+    <ul id="spawn-list">
+        <li>Original Item <span class="delete-me">[X]</span></li>
+    </ul>
+
+    <script>
+        $(document).ready(function(){
+            // 1. Spawner Logic (I'll give you this)
+            $('#spawn-btn').on('click', function(){
+                $('#spawn-list').append('<li>New Item <span class="delete-me">[X]</span></li>');
+            });
+
+            // --- Your Task starts here ---
+            // 2. Use Delegation to make the [X] delete its parent <li>
+
+                $('#spawn-list').on('click', '.delete-me', function(){
+
+                    $(this).parent().remove();
+                })
+        });
+
+        /* DEVELOPER NOTES (The Delegation Delete):
+        --------------------------------------
+        Inside the function, $(this) is the [X] you clicked.
+        To delete the whole line, you need to go UP to the <li>.
+        
+        Logic: 
+        1. Listen on the parent: $('#spawn-list').on('click', '.delete-me', function()...
+        2. Move up from the clicked [X]: $(this).parent().remove();
+        */
+    </script>
+</body>
+</html>
