@@ -1,0 +1,53 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping List: Victory Lap</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .bought { text-decoration: line-through; color: gray; }
+        li { margin-top: 5px; }
+        .delete-btn { margin-left: 10px; color: red; cursor: pointer; }
+        .item-text { cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Victory Shopping List</h2>
+    <input type="text" id="item-input">
+    <button id="add-btn">Add Item</button>
+
+    <ul id="list-root"></ul>
+
+    <script>
+        $(document).ready(function() {
+            // 1. ADD logic (The Builder)
+            // 2. TOGGLE logic (The Sibling - use delegation!)
+            // 3. DELETE logic (The Cleanup Crew - use delegation!)
+
+            $('#add-btn').on("click", function(){
+
+                let inputValue = $('#item-input').val();
+
+                $('#list-root').append(`<li>
+                            <span class="item-text">${inputValue}</span>
+                            <button class="delete-btn">Delete</button>
+                        </li>`)
+
+                        
+
+               
+            })
+
+            $('#list-root').on("click", '.item-text', function(){
+
+                $(this).toggleClass("bought")
+            })
+
+              $('#list-root').on("click", '.delete-btn', function(event){
+
+                $(this).parent().remove();
+            })
+        });
+    </script>
+</body>
+</html>
