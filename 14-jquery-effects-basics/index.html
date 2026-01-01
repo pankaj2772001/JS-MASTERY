@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Magic Wand: Effects</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f4f7f6; }
+        .controls { margin-bottom: 30px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 5px; border: 1px solid #ccc; background: white; transition: 0.2s; }
+        button:hover { background: #e0e0e0; }
+        
+        #magic-box { 
+            width: 300px; 
+            height: 200px; 
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ The Magic Wand</h1>
+
+    <div class="controls">
+        <button id="fade-btn">Fade Out</button>
+        <button id="slide-btn">Slide Up</button>
+        <button id="toggle-btn">Magic Toggle</button>
+        <button id="reset-btn">Reset Box</button>
+    </div>
+
+    <div id="magic-box">I'm a Magic Box!</div>
+
+    <script>
+        $(document).ready(function() {
+            // --- Task 1/3: Your Logic Goes Here ---
+
+            // 1. Fade out the box when #fade-btn is clicked
+
+            $('#fade-btn').on('click', function(){
+
+                $('#magic-box').fadeOut('fast');
+            })
+            
+            // 2. Slide up the box when #slide-btn is clicked
+
+            $('#slide-btn').on('click' ,function(){
+                $('#magic-box').slideUp('fast');
+            })
+            
+            // 3. Use .fadeToggle('slow') for #toggle-btn
+
+            $('#toggle-btn').on('click' ,function(){
+                $('#magic-box').fadeToggle('fast');
+            })
+            
+            // 4. Reset: Use .show() for #reset-btn to bring it back instantly
+
+            $('#reset-btn').on('click' ,function(){
+                $('#magic-box').show('fast');
+            })
+        });
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        Animations in jQuery change the CSS properties (like opacity or height) 
+        slowly over time instead of all at once.
+        
+        - .fadeOut(): Slowly changes opacity to 0, then sets display: none.
+        - .slideUp(): Slowly changes the height to 0.
+        - .toggle() family: These are smart! They check if the element is 
+          hidden. If it is, they show it. If it's shown, they hide it.
+        
+        SPEEDS: You can pass 'slow', 'fast', or a number in milliseconds (like 2000 for 2 seconds).
+        */
+    </script>
+</body>
+</html>
