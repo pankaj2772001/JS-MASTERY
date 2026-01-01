@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Exam: Smart Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #e9ecef; padding: 40px; }
+        .dashboard { max-width: 600px; margin: 0 auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .controls { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; outline: none; }
+        input:focus { border-color: #007bff; }
+        #add-note { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        
+        .note-card { 
+            background: #fff; border-left: 5px solid #007bff; padding: 15px; 
+            margin-bottom: 15px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .urgent { border-left-color: #dc3545; background: #fff5f5; }
+        .actions button { margin-left: 5px; padding: 5px 10px; border-radius: 4px; border: 1px solid #ccc; cursor: pointer; }
+        .mark-urgent { background: #ffc107; }
+        .dismiss { background: #6c757d; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard">
+        <h2>🔔 Notification Center</h2>
+        
+        <div class="controls">
+            <input type="text" id="note-text" placeholder="Enter a new notification...">
+            <button id="add-note">Add Note</button>
+        </div>
+
+        <div id="note-container">
+            <div class="note-card">
+                <span class="text">Welcome! Add your first note above.</span>
+                <div class="actions">
+                    <button class="mark-urgent">Urgent</button>
+                    <button class="dismiss">Dismiss</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // YOUR FINAL EXAM TASKS:
+            
+            // 1. ADDING (The Builder):
+            //    When #add-note is clicked, SCOOP the value.
+            //    If not empty, BUILD a .note-card and HIDE it first, 
+            //    then APPEND it to #note-container and use .slideDown() 
+            //    to make it appear smoothly.
+
+            // 2. URGENT (The Sibling + Toggle):
+            //    Use DELEGATION on #note-container for .mark-urgent buttons.
+            //    When clicked, find the .note-card parent and toggle the class 'urgent'.
+            //    CHALLENGE: Also change the button text to "Normal" if urgent, 
+            //    or "Urgent" if normal.
+
+            // 3. DISMISS (The Cleanup + Animation):
+            //    Use DELEGATION on #note-container for .dismiss buttons.
+            //    When clicked, use .fadeOut() or .slideUp() on the parent .note-card.
+            //    IMPORTANT: Use a "callback" or .delay() to actually .remove() 
+            //    the element from the HTML ONLY after the animation finishes.
+
+            
+
+            $('#add-note').on('click', function(){
+
+                const newCard = $(`<div class="note-card" style="display:none">
+                <span class="text">${$(this).siblings('#note-text').val()}</span>
+                <div class="actions">
+                    <button class="mark-urgent">Urgent</button>
+                    <button class="dismiss">Dismiss</button>
+                </div>
+            </div>`)
+
+            if($(this).siblings('#note-text').val() !== ""){
+
+                $('#note-container').append(newCard)
+
+                    newCard.slideDown('slow')
+            }
+
+            $(this).siblings('#note-text').val("") 
+                    
+
+            })
+
+            $('#note-container').on('click', '.mark-urgent', function(){
+
+                $(this).closest('.note-card').toggleClass('urgent')
+
+                if($(this).closest('.note-card').hasClass('urgent')){
+
+                    $(this).text('Normal')
+                }else{
+                    $(this).text('Urgent')
+                }
+            })
+
+            $('#note-container').on('click', '.dismiss', function(){
+
+               
+              $(this).closest('.note-card').slideUp('slow', function(){
+
+                $(this).remove();
+              })
+            })
+
+
+
+        });
+    </script>
+</body>
+</html>
