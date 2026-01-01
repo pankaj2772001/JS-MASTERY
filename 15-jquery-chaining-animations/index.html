@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Chaining Combo</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        #combo-box { 
+            width: 150px; height: 150px; background: gold; 
+            margin: 20px auto; border: 2px solid black; line-height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="chain-btn">Run Combo Move!</button>
+    <div id="combo-box">Ready?</div>
+
+    <script>
+        $(document).ready(function() {
+            // Your Task:
+            // When #chain-btn is clicked, target #combo-box and:
+            // 1. .fadeOut('slow')
+            // 2. .fadeIn('slow')
+            // 3. .slideUp('slow')
+            // 4. .slideDown('slow')
+            
+            // Write it all in ONE line like: $('#box').action1().action2().action3();
+
+            $('#chain-btn').on('click', function(){
+
+                $('#combo-box').fadeOut('slow').fadeIn('slow').slideUp('slow').slideDown('slow')
+            })
+
+            $('#chain-btn').on('click', function(){
+
+                $('#combo-box').fadeOut('slow').fadeIn('slow').slideToggle('slow').slideToggle('slow')
+            })
+        });
+
+        /* DEVELOPER NOTES (Concept Explanation):
+        --------------------------------------
+        Chaining works because most jQuery methods return the element itself 
+        after they finish their job. 
+        
+        It looks like this:
+        $('#target').css('color', 'red').slideUp(1000).fadeIn(1000);
+        
+        The browser creates a "Queue" (a waiting line). It finishes the 
+        first animation, then moves to the second, then the third.
+        */
+    </script>
+</body>
+</html>
