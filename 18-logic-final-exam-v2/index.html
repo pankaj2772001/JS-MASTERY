@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Exam V2: Profile Manager</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 50px; transition: 0.5s; }
+        .dark-mode { background: #222; color: white; }
+        .card { 
+            border: 1px solid #ccc; padding: 15px; margin: 10px 0; 
+            background: #fff; color: #333; border-radius: 8px; 
+            display: none; 
+        }
+        .admin { border: 3px solid gold; box-shadow: 0 0 10px gold; }
+        .controls { margin-bottom: 20px; border-bottom: 2px solid #ccc; padding-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button id="toggle-theme">Toggle Dark/Light Mode</button>
+        <br><br>
+        <input type="text" id="user-name" placeholder="Enter name...">
+        <button id="add-user">Add Profile</button>
+    </div>
+
+    <div id="profile-list">
+        </div>
+
+    <script>
+        $(document).ready(function() {
+            // YOUR MISSION:
+            
+            // 1. THEME SWITCHER:
+            // When #toggle-theme is clicked, toggle the class 'dark-mode' on the <body>.
+
+                $('#toggle-theme').on('click', function(){
+
+                    $('body').toggleClass('dark-mode')
+
+                })
+
+            // 2. PROFILE CREATOR:
+            // When #add-user is clicked, SCOOP the name from the input.
+            // BUILD a card: <div class="card"> <span>Name</span> <button class="make-admin">Make Admin</button> <button class="remove">Remove</button> </div>
+            // The card MUST slideDown into the #profile-list.
+            // Clear the input field.
+
+            $(document).on('click', '#add-user', function(){
+
+                const name = $('#user-name').val();
+
+                const newCard = $(`<div class="card"> <span>${name}</span> <button class="make-admin">Make Admin</button> <button class="remove">Remove</button> </div>`);
+
+                $('#profile-list').append(newCard);
+                newCard.slideDown("slow");
+
+                $('#user-name').val("");
+            })
+
+            // 3. ADMIN TOGGLE (Delegation):
+            // When .make-admin is clicked, toggle the class 'admin' on its parent .card.
+            // Change the button text to "Remove Admin" or "Make Admin" based on the state.
+
+            $(document).on('click', ".make-admin" , function(){
+
+                $(this).parent().toggleClass('admin')
+
+                if($(this).text() === 'Make Admin'){
+
+                    $(this).text('Remove Admin')
+                }else{
+
+                    $(this).text('Make Admin')
+                }
+            })
+
+
+            // 4. REMOVE PROFILE (Delegation):
+            // When .remove is clicked, the .card should fadeOut and then be .remove()'d from the DOM.
+
+            $(document).on('click', ".remove" , function(){
+
+                $(this).parent().fadeOut("slow", function(){
+
+                    $(this).remove()
+                })
+
+
+             
+            })
+        });
+    </script>
+</body>
+</html>
